@@ -246,19 +246,18 @@ export async function createComment(accountId, postUrn, text) {
 // ─── Reaction ────────────────────────────────────────────────────────────────
 
 /**
- * React to a LinkedIn post via Unipile POST /posts/{urn}/reactions.
+ * React to a LinkedIn post via Unipile POST /posts/reaction.
  *
  * @param {string} accountId
- * @param {string} postUrn
+ * @param {string} postUrn - The social_id of the post (e.g. urn:li:activity:...)
  * @param {string} reactionType - like | celebrate | support | love | insightful | funny
  * @returns { success, data?, error? }
  */
-export async function reactToPost(accountId, postUrn, reactionType) {
+export async function reactToPost(accountId, postUrn, reactionType = "like") {
 	try {
-		const encodedUrn = encodeURIComponent(postUrn);
 		const response = await axios.post(
-			`${BASE_URL}/posts/${encodedUrn}/reactions`,
-			{ reaction_type: reactionType, account_id: accountId },
+			`${BASE_URL}/posts/reaction`,
+			{ account_id: accountId, post_id: postUrn, reaction_type: reactionType },
 			{
 				headers: authHeaders({ "Content-Type": "application/json" }),
 				timeout: 15000,

@@ -145,7 +145,6 @@ export async function handlePublish(args) {
 
 		const postId = result.data.postId;
 
-		// ── Auto-like the post ───────────────────────────────────────────────────
 		let autoLike;
 		if (postId) {
 			const urn = `urn:li:activity:${postId}`;

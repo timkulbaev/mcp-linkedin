@@ -95,10 +95,10 @@ const TOOLS = [
 		name: "linkedin_react",
 		description:
 			"React to a LinkedIn post via Unipile. " +
-			"Sends a reaction (like, celebrate, support, love, insightful, funny) to a post. " +
-			"This action is immediate — there is no dry_run option. " +
-			"Confirm with the user before calling. " +
-			"Accepts a LinkedIn post URL or raw URN.",
+			"Accepts a LinkedIn post URL (e.g. https://linkedin.com/feed/update/urn:li:activity:12345) " +
+			"or a raw URN (urn:li:activity:12345). " +
+			"This action is immediate — there is no dry_run. " +
+			"Reaction type defaults to 'like' if not specified.",
 		inputSchema: {
 			type: "object",
 			properties: {

@@ -10,7 +10,7 @@ This is a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server
 
 - 4 tools: publish, comment, react, delete
 - Dry run by default (preview before publishing)
-- Auto-like after publish
+- Auto-likes posts immediately after publishing
 - Media attachments (local files or URLs — images and video)
 - Company @mentions (auto-resolved via Unipile)
 - Works with Claude Code, Claude Desktop, and any MCP client
@@ -128,7 +128,7 @@ Publish response (dry_run: false):
 }
 ```
 
-Save the `post_id` if you might want to delete the post later.
+Save the `post_id` if you might want to delete the post later. The `auto_like` field reports whether the auto-like after publish succeeded (`"liked"`) or failed (error message).
 
 ---
 
@@ -179,7 +179,7 @@ Reacts to a LinkedIn post. This action is immediate — there is no dry_run.
 | `post_url` | string | yes | — | LinkedIn post URL or raw URN |
 | `reaction_type` | string | no | `"like"` | One of: `like`, `celebrate`, `support`, `love`, `insightful`, `funny` |
 
-Response:
+Response (when re-enabled):
 
 ```json
 {
@@ -219,7 +219,6 @@ AI Assistant  →  MCP Protocol (stdio)  →  mcp-linkedin  →  Unipile API  �
 - For publish: builds multipart FormData with text, media, and mentions, POSTs to Unipile's `/posts` endpoint
 - For mentions: resolves company names to LinkedIn URNs via Unipile's company lookup API
 - For media: downloads URLs to `/tmp/mcp-linkedin-media/`, validates local files, cleans up after publish
-- After a successful publish: auto-likes the post via Unipile's reaction endpoint
 
 ## Safe publishing workflow
 
