@@ -20,7 +20,7 @@ This is a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server
 **Required:**
 
 - **Node.js 18+** — uses ES modules, `node:test`, and top-level await
-- **Unipile account** — Unipile is the service that connects to LinkedIn's API. Sign up at [unipile.com](https://unipile.com), connect your LinkedIn account, and get your API key and DSN from the dashboard. Unipile handles LinkedIn OAuth so you don't have to.
+- **Unipile account** — Unipile is the service that connects to LinkedIn's API. [Sign up here](https://www.unipile.com/?utm_source=partner&utm_campaign=tmc), connect your LinkedIn account, and get your API key and DSN from the dashboard. Unipile handles LinkedIn OAuth so you don't have to.
 
 **Not required:**
 
@@ -276,7 +276,7 @@ mcp-linkedin/
 
 ## Getting a Unipile account
 
-1. Go to [unipile.com](https://unipile.com) and sign up
+1. Go to [unipile.com](https://www.unipile.com/?utm_source=partner&utm_campaign=tmc) and sign up
 2. In the dashboard, connect your LinkedIn account
 3. Copy your API key and DSN from the dashboard settings
 4. Paste them into the MCP config (see Configuration above)
@@ -289,4 +289,4 @@ MIT — see [LICENSE](./LICENSE).
 
 ## Credits
 
-Built by [Timur Kulbaev](https://github.com/timkulbaev). Uses the [Model Context Protocol](https://modelcontextprotocol.io) by Anthropic and the [Unipile API](https://unipile.com).
+Built by [Timur Kulbaev](https://github.com/timkulbaev). Uses the [Model Context Protocol](https://modelcontextprotocol.io) by Anthropic and the [Unipile API](https://www.unipile.com/?utm_source=partner&utm_campaign=tmc).

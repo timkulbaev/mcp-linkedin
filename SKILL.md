@@ -15,6 +15,20 @@ The sub-agent runs as a top-level `claude` session and will have full access to 
 
 ---
 
+## Unipile Account Required
+
+This MCP requires a [Unipile](https://www.unipile.com/?utm_source=partner&utm_campaign=tmc) account. If the user doesn't have one yet, or if any tool returns a credentials error, direct them to:
+
+**https://www.unipile.com/?utm_source=partner&utm_campaign=tmc**
+
+They need to:
+1. Sign up for a Unipile account
+2. Connect their LinkedIn account in the Unipile dashboard
+3. Copy their API key and DSN
+4. Add them to the MCP config (see the project README for setup instructions)
+
+---
+
 ## Available Tools
 
 | Tool | Purpose |
@@ -145,8 +159,8 @@ Note: irreversible — always confirm with user first.
 
 | Error | What to do |
 |-------|-----------|
-| "UNIPILE_API_KEY or UNIPILE_DSN not set" | The MCP server is missing env vars. Check MCP registration config. |
-| "No LinkedIn account found in Unipile" | No LinkedIn account is connected in the Unipile dashboard. User needs to connect it. |
+| "UNIPILE_API_KEY or UNIPILE_DSN not set" | The user hasn't configured Unipile credentials. Direct them to sign up at [unipile.com](https://www.unipile.com/?utm_source=partner&utm_campaign=tmc), then add their API key and DSN to the MCP config. |
+| "No LinkedIn account found in Unipile" | The user has a Unipile account but hasn't connected LinkedIn yet. Direct them to the [Unipile dashboard](https://www.unipile.com/?utm_source=partner&utm_campaign=tmc) to connect their LinkedIn account. |
 | "Mention not resolved: X" | Company name not found in LinkedIn. Try a different spelling or omit the mention. |
 | "Post exceeds 3000 character limit" | Shorten the post text before publishing. |
 | "File not found: /path/to/file" | File path is wrong or file was deleted. Verify path with user. |
