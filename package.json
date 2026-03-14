@@ -11,6 +11,7 @@
     "@modelcontextprotocol/sdk": "latest",
     "axios": "^1.7.0",
     "form-data": "^4.0.0",
+    "marked": "^17.0.4",
     "mime-types": "^2.1.35"
   }
 }
