@@ -2,6 +2,8 @@
 
 An MCP server that lets AI assistants publish to LinkedIn on your behalf.
 
+[![mcp-linkedin MCP server](https://glama.ai/mcp/servers/timkulbaev/mcp-linkedin/badges/card.svg)](https://glama.ai/mcp/servers/timkulbaev/mcp-linkedin)
+
 ## What it does
 
 This is a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that wraps the [Unipile API](https://www.unipile.com/?utm_source=partner&utm_campaign=tmc) to give AI assistants (Claude Code, Claude Desktop, or any MCP-compatible client) the ability to create posts, comments, and reactions on LinkedIn. The AI writes the content; this tool handles the publishing. All publishing actions default to preview mode — nothing goes live without explicit confirmation.
