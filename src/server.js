@@ -35,6 +35,11 @@ const TOOLS = [
 					description:
 						"Post body text. Maximum 3000 characters. Include company names here if you want them @mentioned — they will be replaced with Unipile placeholders automatically.",
 				},
+				account_id: {
+					type: "string",
+					description:
+						"Optional. Unipile account ID to post from. If omitted, the first LinkedIn account found in Unipile is used (default behavior).",
+				},
 				media: {
 					type: "array",
 					items: { type: "string" },

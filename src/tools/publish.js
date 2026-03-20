@@ -38,7 +38,35 @@ export function injectMentionPlaceholders(text, resolvedMentions) {
 }
 
 export async function handlePublish(args) {
-	const { text, media = [], mentions = [], dry_run = true } = args;
+	const { text, account_id } = args;
+
+	// Normalize media: Claude Code may pass array as JSON string "[...]"
+	let media = args.media ?? [];
+	if (typeof media === "string") {
+		try {
+			media = JSON.parse(media);
+			if (!Array.isArray(media)) media = [media];
+		} catch {
+			media = media.length > 0 ? [media] : [];
+		}
+	}
+	if (!Array.isArray(media)) media = [];
+
+	// Normalize mentions similarly
+	let mentions = args.mentions ?? [];
+	if (typeof mentions === "string") {
+		try {
+			mentions = JSON.parse(mentions);
+			if (!Array.isArray(mentions)) mentions = [mentions];
+		} catch {
+			mentions = mentions.length > 0 ? [mentions] : [];
+		}
+	}
+	if (!Array.isArray(mentions)) mentions = [];
+
+	// Normalize dry_run: string "false" is truthy in JS — handle explicitly
+	const dry_run =
+		args.dry_run === false || args.dry_run === "false" ? false : true;
 
 	// ── Validate text ────────────────────────────────────────────────────────
 	if (!text || typeof text !== "string" || text.trim().length === 0) {
@@ -48,13 +76,18 @@ export async function handlePublish(args) {
 	const warnings = [];
 
 	// ── Resolve account ──────────────────────────────────────────────────────
-	const accountResult = await resolveAccountId();
-	if (!accountResult.success) {
-		return {
-			error: `Could not resolve LinkedIn account: ${accountResult.error}`,
-		};
+	let accountId;
+	if (account_id) {
+		accountId = account_id;
+	} else {
+		const accountResult = await resolveAccountId();
+		if (!accountResult.success) {
+			return {
+				error: `Could not resolve LinkedIn account: ${accountResult.error}`,
+			};
+		}
+		accountId = accountResult.data;
 	}
-	const accountId = accountResult.data;
 
 	// ── Resolve company mentions ─────────────────────────────────────────────
 	const resolvedMentions = [];
