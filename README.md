@@ -17,6 +17,10 @@ This is a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server
 - Company @mentions (auto-resolved via Unipile)
 - Works with Claude Code, Claude Desktop, and any MCP client
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/timkulbaev-mcp-linkedin).
+
 ## Prerequisites
 
 - **Node.js 18+** — uses ES modules, `node:test`, and top-level await
